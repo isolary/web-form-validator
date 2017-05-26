@@ -1,0 +1,26 @@
+.container {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+input{
+  height: 36px;
+  display: block;
+  width: 350px;
+  font-size: 16px;
+}
+
+textarea {
+  display: block;
+  resize: none;
+}
+
+span {
+  color: red;
+}
