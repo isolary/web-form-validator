@@ -1,59 +1,113 @@
-Installation:
+# Isolary Form Validator
+
+### Installation
 `npm install isolary-form-validator --save` or `yarn add isolary-from validator`
 
-Available Global Rules:
-  'email'
-  'required'
-  'phone'
-  'url'
-  'integer'
-  'lessThan'
-  'greaterThan'
-  'isEqual'
-  'minLength'
-  'maxLength'
+### How to use
+Download react app example, install dependencies, start app;
 
-Custom Rules Syntax:
-// Keys are a inputs field name
-// Value are array of strings or objects
 
-// if value is string then library validates input value by its own global rules
-// you can specify global error message by passing error in schema object
-// or you can specify validation callback by passing isValid function
+Create a validation schema for your form. The object keys match input fields names.
 
-// rules like lessThan, greaterThan, isEqual, minLength, maxLength, etc. needs option which is
-// input field name (ex. for isEqual rule) or value (if that key doesn't exists in the data object)
-  {
-    username: ['required'],
-    name: [{
-      rule: 'required',
-      error: 'Enter your name',
-    }],
-    email: ['required', 'email'],
-    valid: [{
-      isValid: input => (
-        input === 'valid' ? true : 'The custom field is not valid'
-      ),
-    }],
-    confirmPassword: [{
-      rule: 'isEqual',
-      error: 'Passoword confirmation should match the password',
-      option: 'password',
-    }],
-    message: [{
-      rule: 'maxLength',
-      option: 50,
-    }],
-    'address.zip': [
-      'integer',
-      'required',
-      {
-        rule: 'minLength',
-        option: 5,
+List validation rules as array of strings or objects;
+
+Available global rules: `required`, `email`, `phone`, `url`, `integer`, `lessThan`, `greaterThan`, `isEqual`, `minLength`, `maxLength`.
+
+To customize error message in global rules add `error` in object that mentions a rule;
+```javascript
+  name: [{
+    rule: 'required',
+    error: 'Enter your name',
+  }],
+```
+
+To customize a validation callback in global rules or add your own validation rule add `isValid` callback in object that mentions a rule;
+
+The callback should return `true` if the field is valid or error message if the field is not valid
+```javascript
+  valid: [{
+    isValid: input => (
+      input === 'valid' ? true : 'The custom field is not valid'
+    ),
+  }]
+```
+
+User `option` in rules which require that (`lessThan`, `greaterThan`, `isEqual`, `minLength`, `maxLength`);
+
+The library uses option as a fields name (if exists) otherwise as a value;
+
+e.g. the library will try find a formData.password to compare with formData.confirmPassword
+```javascript
+  confirmPassword: [{
+    rule: 'isEqual',
+    error: 'Passoword confirmation should match the password',
+    option: 'password',
+  }],
+```
+
+**schema.js**
+```javascript
+export default {
+  username: ['required'],
+  name: [{
+    rule: 'required',
+    error: 'Enter your name',
+  }],
+  email: ['required', 'email'],
+  valid: [{
+    isValid: input => (
+      input === 'valid' ? true : 'The custom field is not valid'
+    ),
+  }],
+  confirmPassword: [{
+    rule: 'isEqual',
+    error: 'Passoword confirmation should match the password',
+    option: 'password',
+  }],
+  message: [{
+    rule: 'maxLength',
+    option: 50,
+  }],
+  'address.zip': [
+    'integer',
+    'required',
+    {
+      rule: 'minLength',
+      option: 5,
+    },
+  ],
+};
+```
+
+**App.js**
+```javascript
+  ........
+  import validate from 'isolary-form-validator';
+  ........
+  import schema from './schema';
+  ........
+  state = {
+    formData: {
+      name: '',
+      username: '',
+      email: '',
+      valid: '',
+      password: '',
+      confirmPassword: '',
+      message: '',
+      address: {
+        ........
+        zip: '',
       },
-    ],
-  };
+    },
+    errors: {},
+    isValid: true,
+  }
+  ........
+  onSubmitHandler = (e) => {
+    e.preventDefault();
+    const { errors, isValid } = validate(schema, this.state.formData);
+  .......
+```
 
-
-How to use:
-React app example
+validate callback returns array of objects (errors where key is input field name, value is an error) and boolean `isValid`
