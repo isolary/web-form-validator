@@ -1,5 +1,5 @@
 ### Installation:
-`npm install web-form-validator --save` or `yarn add web-form-validator validator`
+`npm install web-form-validator --save` or `yarn add web-form-validator`
 
 ### How to use
 Download react app example, install dependencies, start app;
