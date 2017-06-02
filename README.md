@@ -22,6 +22,20 @@ To customize error message in global rules add `error` in object that mentions a
 To customize a validation callback in global rules or add your own validation rule add `isValid` callback in object that mentions a rule;
 
 The callback should return `true` if the field is valid or error message if the field is not valid
+
+```javascript
+  'phone.home': [{
+    rule: 'require',
+    isValid: (input, err, opt, formData) => {
+      const workNumber = getDeepValue(formData, 'phone.work') || '';
+      const homeNumber = input || '';
+      return (workNumber.trim().length || homeNumber.trim().length) ? true : 'Enter home or work number';
+    },
+  }]
+
+```
+
+
 ```javascript
   valid: [{
     isValid: input => (
