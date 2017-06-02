@@ -1,8 +1,16 @@
 {
   "name": "web-form-validator",
-  "version": "0.0.4",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A JavaScript Form data validation library.",
   "main": "index.js",
+  "keywords": [
+    "javascript",
+    "js",
+    "validator",
+    "validation",
+    "form",
+    "react"
+  ],
   "scripts": {
     "lint": "eslint ./lib -f table || true",
     "test-unit": "mocha --compilers js:babel-core/register 'tests/**/*Test.js'",
