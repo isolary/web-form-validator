@@ -1,6 +1,6 @@
 {
   "name": "web-form-validator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A JavaScript Form data validation library.",
   "main": "index.js",
   "keywords": [
@@ -41,6 +41,7 @@
     "mocha": "^3.4.2"
   },
   "dependencies": {
+    "lodash.isempty": "^4.4.0",
     "lodash.isequal": "^4.5.0",
     "validator": "^7.0.0"
   }
