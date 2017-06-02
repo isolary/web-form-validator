@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import validate from 'isolary-form-validator';
+import validate from 'web-form-validator';
 
 import schema from './schema';
 

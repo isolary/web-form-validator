@@ -44,11 +44,11 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "isolary-form-validator": "^0.0.2",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "validator": "^7.0.0",
+    "web-form-validator": "^0.0.4",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   }

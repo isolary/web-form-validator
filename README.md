@@ -1,5 +1,5 @@
 Installation:
-`npm install isolary-form-validator --save` or `yarn add isolary-from validator`
+`npm install web-form-validator --save` or `yarn add web-form-validator validator`
 
 Available Global Rules:
   'email'

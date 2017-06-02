@@ -1,6 +1,6 @@
 {
-  "name": "isolary-form-validator",
-  "version": "0.0.2",
+  "name": "web-form-validator",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/isolary/isolary-form-validator.git"
+    "url": "https://github.com/isolary/web-form-validator.git"
   },
   "bugs": {
-    "url": "https://github.com/isolary/isolary-form-validator/issues"
+    "url": "https://github.com/isolary/web-form-validator/issues"
   },
   "license": "ISC",
   "devDependencies": {
