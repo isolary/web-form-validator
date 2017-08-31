@@ -1,6 +1,6 @@
 {
   "name": "web-form-validator",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A JavaScript Form data validation library.",
   "main": "index.js",
   "keywords": [
