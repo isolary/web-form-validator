@@ -110,11 +110,15 @@ describe('Validation', function() {
       }],
       confirmPassword: [{
         rule: 'isEqual',
-        option: 'password',
+        option: {
+          match: 'password',
+        },
       }],
       active: [{
         rule: 'isEqual',
-        option: 'true',
+        option: {
+          value: 'true',
+        },
       }],
       message: [{
         rule: 'minLength',
@@ -130,7 +134,7 @@ describe('Validation', function() {
     }
 
     var { errors, isValid } = validate(schema, data);
-    expect(errors).to.eql({ });
+    expect(errors).to.eql({});
     expect(isValid).to.eql(true);
 
   })
