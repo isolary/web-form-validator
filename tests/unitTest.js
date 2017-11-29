@@ -1,5 +1,5 @@
 import expect from 'expect.js';
-import validate from '../lib/index.js';
+import validate from '../src/index.js';
 
 describe('Validation', function() {
   it('The user name is required. Using global rules', function() {
