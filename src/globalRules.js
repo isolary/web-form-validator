@@ -1,5 +1,6 @@
 import Validator from 'validator';
 import isEqual from 'lodash/isEqual';
+import { getDeepValue } from './utils';
 
 export default {
   email: {
@@ -9,7 +10,7 @@ export default {
   },
   required: {
     isValid: (input = '', error = 'The input field is requried') => (
-      Validator.isEmpty(input) ? error : true
+      Validator.isEmpty((input || '').toString()) ? error : true
     ),
   },
   phone: {
@@ -45,7 +46,7 @@ export default {
     isValid: (input = '', error, options = {}, formData = {}) => {
       let match = '';
       if (options.match) {
-        match = formData[options.match] || '';
+        match = getDeepValue(formData, options.match) || '';
       } else {
         match = options.value || '';
       }
